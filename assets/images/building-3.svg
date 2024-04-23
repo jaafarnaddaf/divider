@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="218.09" height="245.148" viewBox="0 0 218.09 245.148">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_657" data-name="Rectangle 657" width="201.498" height="221.875" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_659" data-name="Rectangle 659" width="60.544" height="29.761" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Building3" transform="translate(-1071.347 -708.373)">
+    <g id="Group_446" data-name="Group 446" transform="translate(1087.939 731.646)" opacity="0.34" style="mix-blend-mode: multiply;isolation: isolate">
+      <g id="Group_445" data-name="Group 445">
+        <g id="Group_444" data-name="Group 444" clip-path="url(#clip-path)">
+          <path id="Path_3347" data-name="Path 3347" d="M1134.3,724.482v-88.3h-55.472v-9.056H997.32v9.056H932.8v88.3h32.828v29.434H932.8v88.3h66.79v6.794h88.3v-6.794H1134.3v-88.3h-23.776V724.482Z" transform="translate(-932.796 -627.13)"/>
+        </g>
+      </g>
+    </g>
+    <path id="Path_3348" data-name="Path 3348" d="M1120.077,704.538v-88.3h-55.469v-9.056H983.1v9.056H918.574v88.3H951.4v29.43H918.574v88.3H985.36v6.79h88.3v-6.79h46.416v-88.3H1096.3v-29.43Z" transform="translate(152.773 101.191)" fill="#fff"/>
+    <path id="Path_3349" data-name="Path 3349" d="M1104.875,687.72V626.588h-176.6V687.72h35.657v57.733H928.278v61.129h176.6V745.453h-24.339V687.72Z" transform="translate(154.39 104.425)" fill="#dcdcdc"/>
+    <g id="Group_449" data-name="Group 449" transform="translate(1143.681 759.832)" opacity="0.34" style="mix-blend-mode: multiply;isolation: isolate">
+      <g id="Group_448" data-name="Group 448">
+        <g id="Group_447" data-name="Group 447" clip-path="url(#clip-path-2)">
+          <rect id="Rectangle_658" data-name="Rectangle 658" width="60.544" height="29.756" transform="translate(0 0.006)"/>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle_660" data-name="Rectangle 660" width="60.55" height="29.759" transform="translate(1138.541 755.865)" fill="#f2f2f2"/>
+    <rect id="Rectangle_661" data-name="Rectangle 661" width="52.476" height="25.79" transform="translate(1142.577 757.852)" fill="#999"/>
+    <g id="Group_452" data-name="Group 452" transform="translate(1143.681 853.374)" opacity="0.34" style="mix-blend-mode: multiply;isolation: isolate">
+      <g id="Group_451" data-name="Group 451">
+        <g id="Group_450" data-name="Group 450" clip-path="url(#clip-path-2)">
+          <rect id="Rectangle_662" data-name="Rectangle 662" width="60.544" height="29.759" transform="translate(0 0.003)"/>
+        </g>
+      </g>
+    </g>
+    <rect id="Rectangle_664" data-name="Rectangle 664" width="60.55" height="29.759" transform="translate(1138.541 849.41)" fill="#f2f2f2"/>
+    <rect id="Rectangle_665" data-name="Rectangle 665" width="52.476" height="25.788" transform="translate(1142.577 851.396)" fill="#999"/>
+  </g>
+</svg>
