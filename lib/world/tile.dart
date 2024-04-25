@@ -51,12 +51,20 @@ class Tile extends BodyComponent {
     [
       [Vector2(-5, -7), Vector2(4, -7), Vector2(4, 6), Vector2(-5, 6)],
       [Vector2(-7, -7), Vector2(6, -7), Vector2(6, -2), Vector2(-7, -2)],
-      [Vector2(-7, 1), Vector2(6, 1), Vector2(6, 6), Vector2(-7, 6)],
+      [Vector2(-7, 1), Vector2(6, 1), Vector2(6, 6), Vector2(-7, 6)]
     ],
     [
       [Vector2(-5, -7), Vector2(4, -7), Vector2(4, 6), Vector2(-5, 6)],
       [Vector2(-7, -7), Vector2(6, -7), Vector2(6, -2), Vector2(-7, -2)],
-      [Vector2(-7, 1), Vector2(6, 1), Vector2(6, 6), Vector2(-7, 6)],
+      [Vector2(-7, 1), Vector2(6, 1), Vector2(6, 6), Vector2(-7, 6)]
+    ],
+    [
+      [Vector2(-10, -3), Vector2(8, -3), Vector2(8, 3), Vector2(-10, 3)],
+      [Vector2(-5, -5), Vector2(2, -5), Vector2(2, -3), Vector2(-5, -3)]
+    ],
+    [
+      [Vector2(-6, -6), Vector2(4, -6), Vector2(4, 5), Vector2(-6, 5)],
+      [Vector2(-2, -9), Vector2(1, -9), Vector2(1, 7), Vector2(-2, 7)]
     ]
   ];
 
@@ -77,8 +85,8 @@ class Tile extends BodyComponent {
 
     Random random = Random();
     add(SolidColor(
-        gridWidth: gridSize,
-        gridHeight: gridSize,
+        gridWidth: gridSize + 1,
+        gridHeight: gridSize + 1,
         color: const Color(0xFFA7A9AC)));
     add(SolidColor(
         gridWidth: gridSize - 8,
@@ -94,56 +102,57 @@ class Tile extends BodyComponent {
     List<List<bool>> used = List.generate(gridSize - 16,
         (index) => List.generate(gridSize - 16, (index) => false));
     List<Building> buildingChildren = [];
-    Vector3 building = buildingSizes[3];
+    int index = random.nextInt(6);
+    Vector3 building = buildingSizes[index];
     buildingChildren.add(Building(
         offset: tilePosition + Vector2(0 + 16.0, 0 + 16.0),
         gridWidth: building.x.toInt(),
         gridHeight: building.y.toInt(),
         index: building.z.toInt(),
-        vertices: buildingVertices[3]));
-    // for (int i = 0; i < used.length; i++) {
-    //   for (int j = 0; j < used.length; j++) {
-    //     if (used[i][j]) {
-    //       continue;
-    //     }
-    //     Vector2 area = calculateSpace(used, i, j);
-    //     int type = Random().nextInt(5);
-    //     switch (type) {
-    //       case 1:
-    //       case 2:
-    //       case 3:
-    //         List<Vector3> eligible = buildingSizes
-    //             .where((b) => b.x <= area.x && b.y <= area.y)
-    //             .toList();
-    //         if (eligible.isNotEmpty) {
-    //           int index = random.nextInt(eligible.length);
-    //           Vector3 building = eligible[index];
-    //           buildingChildren.add(Building(
-    //               offset: tilePosition + Vector2(i + 16.0, j.toDouble() + 16.0),
-    //               gridWidth: building.x.toInt(),
-    //               gridHeight: building.y.toInt(),
-    //               index: building.z.toInt(),
-    //               vertices: buildingVertices[index]));
-    //           useArea(used, building, i, j);
-    //         }
-    //         break;
-    //       case 4:
-    //         List<Vector3> eligible =
-    //             treeSizes.where((b) => b.x <= area.x && b.y <= area.y).toList();
-    //         if (eligible.isNotEmpty) {
-    //           int index = random.nextInt(eligible.length);
-    //           Vector3 tree = eligible[index];
-    //           world.add(Tree(
-    //               offset: tilePosition + Vector2(i + 16.0, j + 16.0),
-    //               gridWidth: tree.x.toInt(),
-    //               gridHeight: tree.y.toInt(),
-    //               index: tree.z.toInt()));
-    //           useArea(used, tree, i, j);
-    //         }
-    //         break;
-    //     }
-    //   }
-    // }
+        vertices: buildingVertices[index]));
+    for (int i = 0; i < used.length; i++) {
+      for (int j = 0; j < used.length; j++) {
+        if (used[i][j]) {
+          continue;
+        }
+        Vector2 area = calculateSpace(used, i, j);
+        int type = Random().nextInt(5);
+        switch (type) {
+          case 1:
+          case 2:
+          case 3:
+            List<Vector3> eligible = buildingSizes
+                .where((b) => b.x <= area.x && b.y <= area.y)
+                .toList();
+            if (eligible.isNotEmpty) {
+              int index = random.nextInt(eligible.length);
+              Vector3 building = eligible[index];
+              buildingChildren.add(Building(
+                  offset: tilePosition + Vector2(i + 16.0, j.toDouble() + 16.0),
+                  gridWidth: building.x.toInt(),
+                  gridHeight: building.y.toInt(),
+                  index: building.z.toInt(),
+                  vertices: buildingVertices[index]));
+              useArea(used, building, i, j);
+            }
+            break;
+          case 4:
+            List<Vector3> eligible =
+                treeSizes.where((b) => b.x <= area.x && b.y <= area.y).toList();
+            if (eligible.isNotEmpty) {
+              int index = random.nextInt(eligible.length);
+              Vector3 tree = eligible[index];
+              world.add(Tree(
+                  offset: tilePosition + Vector2(i + 16.0, j + 16.0),
+                  gridWidth: tree.x.toInt(),
+                  gridHeight: tree.y.toInt(),
+                  index: tree.z.toInt()));
+              useArea(used, tree, i, j);
+            }
+            break;
+        }
+      }
+    }
 
     for (Building element in buildingChildren) {
       world.add(element);
@@ -305,8 +314,8 @@ class SvgImageComponent extends Component {
     super.onLoad();
     final svgInstance = await Svg.load(path);
     final svgComponent = SvgComponent(
-        size: size * 4,
-        scale: Vector2(0.25, 0.25),
+        size: size * 16,
+        scale: Vector2(0.06125, 0.06125),
         svg: svgInstance,
         position: position);
 
