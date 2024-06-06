@@ -7,7 +7,8 @@ class Player extends BodyComponent {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    renderBody = true;
+    renderBody = false;
+    body.setFixedRotation(true);
   }
 
   @override
